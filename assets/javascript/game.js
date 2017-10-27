@@ -6,9 +6,15 @@ var computerGuess = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
 
 var wins = 0;
 var losses = 0;
-var guessesLeft = 9;
-var totalGuesses = 9;
+var guessesLeft = 10;
+var totalGuesses = 10;
 var guessesSoFar = [];
+
+
+//had trouble pushing the values of the user guesses into the gussesSoFar array defined above.  
+
+//also couldn't make the reset function work properly.  
+
 
 
 
@@ -23,18 +29,20 @@ var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 	var userGuess = event.key;
 	console.log(userGuess);
 
+	guessesSoFar = [userGuess];
 
 
 
-if(computerGuess===userGuess && guessesLeft >= 0){
+
+if(computerGuess===userGuess && guessesLeft >= 1){
 	
 	wins = wins + 1; 
-	alert("You are Psychic!");
+	alert("You're spooky psychic!");
 	var guessesSoFar = [];
 
 
 }
-else if ( computerGuess!==userGuess && guessesLeft>=0) {
+else if ( computerGuess!==userGuess && guessesLeft>1) {
 	guessesLeft = guessesLeft -1 ;
 	losses = losses +1;
 	var guessesSoFar = [];
@@ -47,7 +55,11 @@ else if ( computerGuess!==userGuess && guessesLeft>=0) {
 	  	"<h3> Guess What Letter I am Thinking Of!</h3>" +
  		"<p> Wins: " + wins + "</p>" +
           "<p> Losses: " + losses + "</p>" +
-          "<p> Guesses Left: " + guessesLeft + "</p>";
+          "<p> Guesses Left: " + guessesLeft + "</p>"; +
+          "<p> Guesses So Far: " + guessesSoFar + "/p>";
+
+          console.log(guessesSoFar);
+
          
       
 document.querySelector("#game").innerHTML = html;
